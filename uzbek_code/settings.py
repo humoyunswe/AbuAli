@@ -158,54 +158,5 @@ CACHES = {
     }
 }
 
-# --- Vercel specific settings ---
-if os.getenv('VERCEL') or os.getenv('VERCEL_URL'):
-    # Minimal apps without heavy packages
-    INSTALLED_APPS = [
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-        # Only essential apps
-        'about_us',
-        'accounts',
-        'articles',
-        'projects',
-        'candidate',
-        'widget_tweaks',  # lightweight
-    ]
-    
-    # Use simple static files without CKEditor
-    STATIC_URL = '/static/'
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-    
-    # Disable debug on Vercel
-    DEBUG = False
-    
-    # Force HTTPS
-    SECURE_SSL_REDIRECT = True
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    
-    # Database connection optimization for serverless
-    if 'default' in DATABASES:
-        DATABASES['default']['CONN_MAX_AGE'] = 0
-    
-    # Reduce logging
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'handlers': {
-            'console': {
-                'class': 'logging.StreamHandler',
-            },
-        },
-        'loggers': {
-            'django': {
-                'handlers': ['console'],
-                'level': 'WARNING',
-            },
-        },
-    }
+
 
