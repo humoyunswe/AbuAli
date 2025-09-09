@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %}{% trans "Tutorials" %}{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/_darslar.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="courses-section">
+    <h1>{% trans "Tutorials" %}</h1>
+    <div class="course-grid">
+        <div class="course-card">
+            <div class="course-content">
+                <h3 class="course-title">{% trans "Lesson 1: Python Basics" %}</h3>
+                <p class="course-description">{% trans "Basics of the Python programming language and important information for learning" %}</p>
+                <div class="course-meta">
+                    <span><i class="fas fa-clock"></i> {% trans "12 hours" %}</span>
+                    <span><i class="fas fa-users"></i> {% trans "500+ students" %}</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 70%"></div>
+                </div>
+                <a href="#" class="btn-course">{% trans "Details" %}</a>
+            </div>
+        </div>
+        
+        <div class="course-card">
+            <div class="course-content">
+                <h3 class="course-title">{% trans "Lesson 2: Django Framework" %}</h3>
+                <p class="course-description">{% trans "Basics of the Django framework and creating websites" %}</p>
+                <div class="course-meta">
+                    <span><i class="fas fa-clock"></i> {% trans "15 hours" %}</span>
+                    <span><i class="fas fa-users"></i> {% trans "300+ students" %}</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 45%"></div>
+                </div>
+                <a href="#" class="btn-course">{% trans "Details" %}</a>
+            </div>
+        </div>
+        
+        <div class="course-card">
+            <div class="course-content">
+                <h3 class="course-title">{% trans "Lesson 3: Frontend Development" %}</h3>
+                <p class="course-description">{% trans "HTML, CSS, and JavaScript basics" %}</p>
+                <div class="course-meta">
+                    <span><i class="fas fa-clock"></i> {% trans "10 hours" %}</span>
+                    <span><i class="fas fa-users"></i> {% trans "450+ students" %}</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 60%"></div>
+                </div>
+                <a href="#" class="btn-course">{% trans "Details" %}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

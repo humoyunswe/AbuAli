@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block title %}{% trans "Contact Us" %}{% endblock %}
+
+{% block content %}
+<div class="contact-container">
+    <div class="contact-header" data-aos="fade-down">
+        <h1>{% trans "Contact Us" %}</h1>
+        <p>{% trans "We are always happy to help. Choose a convenient way to contact us or send us a message using the form below." %}</p>
+    </div>
+
+    <div class="contact-info-grid">
+        <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-icon instagram">
+                <i class="fab fa-instagram"></i>
+            </div>
+            <h3>{% trans "Instagram" %}</h3>
+            <p>{% trans "Follow us to stay updated." %}</p>
+            <a href="https://instagram.com/abuali" target="_blank" class="contact-link">@abuali</a>
+        </div>
+
+        <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="contact-icon telegram">
+                <i class="fab fa-telegram-plane"></i>
+            </div>
+            <h3>{% trans "Telegram" %}</h3>
+            <p>{% trans "Follow us to stay updated." %}</p>
+            <a href="https://t.me/abuali_admin" target="_blank" class="contact-link">@abuali_admin</a>
+        </div>
+
+        <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="contact-icon phone">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <h3>{% trans "Phone" %}</h3>
+            <p>{% trans "Call us during business hours for a consultation." %}</p>
+            <a href="tel:+998942182609" class="contact-link">+998 (94) 218-26-09</a>
+        </div>
+    </div>
+
+    <div class="contact-form-section" data-aos="fade-up" data-aos-delay="400">
+        <h2>{% trans "Send a message" %}</h2>
+        <form action="" method="post" class="contact-form">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">{% trans "Your name" %}</label>
+                    <input type="text" id="name" name="name" placeholder="Илон Маск" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">{% trans "Your Email" %}</label>
+                    <input type="email" id="email" name="email" placeholder="elon@tesla.com" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="subject">{% trans "Subject" %}</label>
+                <input type="text" id="subject" name="subject" placeholder="Предложение о сотрудничестве" required>
+            </div>
+            <div class="form-group">
+                <label for="message">{% trans "Message" %}</label>
+                <textarea id="message" name="message" rows="6" placeholder="Расскажите подробнее..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">{% trans "Send" %}</button>
+        </form>
+    </div>
+
+    <section class="join-us-section" data-aos="fade-up">
+        <div class="join-us-content">
+            <h2 class="join-us-title">{% trans "Are you a developer?" %}</h2>
+            <p class="join-us-text">{% trans "Want to join our team?" %}</p>
+            <a href="{% url 'joing_to_us' %}" class="btn btn-primary btn-join">{% trans "Join Us" %}</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

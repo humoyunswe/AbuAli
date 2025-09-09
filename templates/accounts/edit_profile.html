@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Edit Profile" %} - UzbCode{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-card">
+        <div class="profile-header">
+            <h2>✨ {% trans "Edit Profile" %}</h2>
+            <p>{% trans "Update your information" %}</p>
+        </div>
+        
+        <form class="profile-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Avatar Section -->
+            <div class="avatar-section">
+                <div class="avatar-wrapper">
+                    {% if user.avatar %}
+                        <img src="{{ user.avatar.url }}" alt="Profile" class="avatar-img">
+                    {% else %}
+                        <div class="avatar-placeholder">{{ user.get_initials }}</div>
+                    {% endif %}
+                    <div class="avatar-overlay">
+                        <span>📷</span>
+                    </div>
+                </div>
+                
+                <div class="avatar-upload-wrapper">
+                    {{ form.avatar }}
+                    <label for="{{ form.avatar.id_for_label }}" class="avatar-upload-label">
+                        {% trans "Upload Photo" %}
+                    </label>
+                </div>
+                
+            </div>
+            
+            <!-- Form Fields -->
+            <div class="form-grid">
+                <div class="form-field">
+                    {{ form.first_name }}
+                    <label for="{{ form.first_name.id_for_label }}">{% trans "First Name" %}</label>
+                    {% if form.first_name.errors %}<span class="error">{{ form.first_name.errors.0 }}</span>{% endif %}
+                </div>
+                
+                <div class="form-field">
+                    {{ form.last_name }}
+                    <label for="{{ form.last_name.id_for_label }}">{% trans "Last Name" %}</label>
+                    {% if form.last_name.errors %}<span class="error">{{ form.last_name.errors.0 }}</span>{% endif %}
+                </div>
+                
+                <div class="form-field">
+                    {{ form.website }}
+                    <label for="{{ form.website.id_for_label }}">{% trans "Website" %}</label>
+                    {% if form.website.errors %}<span class="error">{{ form.website.errors.0 }}</span>{% endif %}
+                </div>
+                
+                <div class="form-field">
+                    {{ form.github }}
+                    <label for="{{ form.github.id_for_label }}">{% trans "GitHub" %}</label>
+                    {% if form.github.errors %}<span class="error">{{ form.github.errors.0 }}</span>{% endif %}
+                </div>
+            </div>
+            
+            <button type="submit" class="save-btn">
+                <span>💾</span>
+                {% trans "Save Changes" %}
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}

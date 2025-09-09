@@ -1,0 +1,200 @@
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Tablet and smaller screens */
+@media (max-width: 1024px) {
+    .nav {
+        padding: 1rem 1.5rem;
+    }
+    
+    .nav-links {
+        gap: 1.5rem;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+    .nav {
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: space-between;
+    }
+
+    .logo {
+        order: 1;
+    }
+
+    .nav-actions {
+        order: 2;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+    
+    .language-selector {
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .language-select {
+        font-size: 0.8rem;
+    }
+    
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        padding: 0.6rem;
+    }
+    
+    .theme-icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .hamburger-menu {
+        display: flex; /* Show hamburger on mobile */
+        order: 3;
+        margin-left: auto; /* Push to the right */
+        position: relative;
+        z-index: 1200;
+    }
+
+    .nav-links {
+        display: none; /* Hide default nav links */
+        flex-direction: column;
+        width: 100%;
+        background: var(--bg-card); /* Background for mobile menu */
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        padding: 1rem 0;
+        border-top: 1px solid var(--border);
+        box-shadow: var(--shadow-xl);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    }
+
+    .nav-links.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-link {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid var(--border);
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .auth-section {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    .auth-btn {
+        justify-content: center;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .auth-guest {
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .signup-btn .auth-icon,
+    .login-btn .auth-icon {
+        display: none;
+    }
+    
+    .user-profile {
+        padding: 0.5rem 1rem;
+    }
+    
+    .user-info {
+        display: none;
+    }
+    
+    .dropdown-arrow {
+        display: none;
+    }
+    
+    .user-menu {
+        width: 280px;
+        right: -20px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+    
+    .modal-header {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+    
+    .auth-form {
+        padding: 1.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-login {
+        grid-template-columns: 1fr;
+    }
+    
+    .theme-toggle {
+        padding: 0.5rem;
+    }
+    
+    .theme-toggle #theme-text {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav {
+        flex-direction: row; /* Keep row for logo, actions, hamburger */
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+    
+    .auth-guest {
+        flex-direction: row; /* Keep auth buttons in a row or adjust as needed */
+        gap: 0.5rem;
+    }
+    
+    .auth-btn {
+        padding: 0.75rem 1.25rem;
+        width: auto; /* Reset width to auto for row layout */
+        justify-content: center;
+    }
+    
+    .user-menu {
+        width: calc(100vw - 2rem);
+        right: 1rem;
+        left: 1rem;
+    }
+    
+    .modal-content {
+        width: calc(100vw - 2rem);
+        margin: 1rem;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+    }
+} 

@@ -1,0 +1,135 @@
+/* ===== АНИМАЦИИ ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-content {
+    animation: fadeInScale 0.3s ease-out;
+}
+
+.user-menu {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* ===== ДОПОЛНИТЕЛЬНЫЕ ЭФФЕКТЫ ===== */
+.auth-btn,
+.form-submit,
+.social-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-btn::after,
+.form-submit::after,
+.social-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.auth-btn:active::after,
+.form-submit:active::after,
+.social-btn:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* ===== СОСТОЯНИЯ ФОКУСА ===== */
+*:focus {
+    outline: none;
+}
+
+.auth-btn:focus,
+.form-input:focus,
+.form-submit:focus,
+.social-btn:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* ===== СКРОЛЛБАР ===== */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* ===== СОСТОЯНИЯ ЗАГРУЗКИ ===== */
+.loading {
+    pointer-events: none;
+    opacity: 0.7;
+    transition: opacity var(--transition-normal);
+}
+
+.loading .form-input {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+/* ===== УВЕДОМЛЕНИЯ (для будущего использования) ===== */
+.notification {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    z-index: 3000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.notification.error {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.notification.warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+} 

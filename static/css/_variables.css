@@ -1,0 +1,130 @@
+:root {
+    /* Light Theme - Modern & Clean Color Palette */
+    --bg-primary: #ffffff; /* Pure white background */
+    --bg-secondary: #f8fafc; /* Very light gray */
+    --bg-card: #ffffff;
+    --text-primary: #1e293b; /* Dark slate for better contrast */
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --text-on-accent: #ffffff;
+    --accent-primary: #6366f1; /* Indigo */
+    --accent-secondary: #14b8a6; /* Teal */
+    --accent-hover: #4f46e5; /* Darker Indigo */
+    --border: #e5e7eb;
+    --border-light: #f3f4f6;
+    
+    /* Status Colors */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #3b82f6;
+    
+    /* Background variants */
+    --bg-error: #fef2f2;
+    --bg-success: #f0fdf4;
+    --bg-warning: #fffbeb;
+    --bg-info: #eff6ff;
+    
+    /* Border variants */
+    --border-error: #fecaca;
+    --border-success: #bbf7d0;
+    --border-warning: #fed7aa;
+    --border-info: #bfdbfe;
+    
+    /* Text variants */
+    --text-error: #dc2626;
+    --text-success: #059669;
+    --text-warning: #d97706;
+    --text-info: #2563eb;
+    
+    /* Light Theme Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0,0,0,0.05);
+    --shadow-focus: 0 0 0 3px rgba(99, 102, 241, 0.1);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    --gradient-secondary: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    --gradient-tertiary: linear-gradient(135deg, #ff9a56, #ff6b95);
+    --gradient-text: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    --gradient-hero-title: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+  
+    /* Glass Effects */
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-bg-light: rgba(0, 0, 0, 0.05);
+    --glass-border-light: rgba(0, 0, 0, 0.1);
+
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme Palette */
+    --bg-primary: #0f172a; /* Darker, slightly blue background */
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-on-accent: #ffffff;
+    --accent-primary: #818cf8; /* Lighter Indigo */
+    --accent-secondary: #2dd4bf; /* Lighter Teal */
+    --accent-hover: #6366f1;
+    --border: #334155; /* Softer border */
+    --border-light: #475569;
+    
+    /* Status Colors - Dark Theme */
+    --success: #22c55e;
+    --warning: #fbbf24;
+    --error: #f87171;
+    --info: #60a5fa;
+    
+    /* Background variants - Dark Theme */
+    --bg-error: #1f1315;
+    --bg-success: #0f1b0f;
+    --bg-warning: #1f1a0c;
+    --bg-info: #0f1629;
+    
+    /* Border variants - Dark Theme */
+    --border-error: #3f1f23;
+    --border-success: #1f3f23;
+    --border-warning: #3f2f1f;
+    --border-info: #1f2f3f;
+    
+    /* Text variants - Dark Theme */
+    --text-error: #fca5a5;
+    --text-success: #86efac;
+    --text-warning: #fcd34d;
+    --text-info: #93c5fd;
+
+    /* Dark Theme Shadows (more subtle) */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0,0,0,0.2);
+    --shadow-focus: 0 0 0 3px rgba(129, 140, 248, 0.3);
+
+    /* Dark Theme Gradients */
+    --gradient-primary: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+    --gradient-secondary: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 100%);
+} 

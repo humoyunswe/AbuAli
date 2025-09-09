@@ -1,0 +1,198 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Test - UzbCode</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/auth-buttons.css' %}">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="nav-link">
+                <img style="width: 150px;" class="logo" src="{% static 'logo/abuali.png' %}" alt="Logo">
+            </a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">{% trans "Articles" %}</a>
+                <a href="#" class="nav-link">{% trans "Tutorials" %}</a>
+                <a href="#" class="nav-link active">{% trans "About Us" %}</a>
+                <a href="#" class="nav-link">{% trans "Projects" %}</a>
+                <a href="#" class="nav-link">{% trans "Contact" %}</a>
+                <a href="#" class="nav-link">{% trans "Profile" %}</a>
+            </div>
+            <div class="nav-actions">
+                {% get_current_language as LANGUAGE_CODE %}
+                <form action="{% url 'set_language' %}" method="post" class="language-form">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
+                    <div class="language-selector">
+                        <svg class="language-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.9 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zM8.54 14h6.92c.08-.66.14-1.32.14-2s-.06-1.34-.14-2H8.54c-.08.66-.14 1.32-.14 2s.06 1.34.14 2zm5.08 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.66-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
+                        </svg>
+                        <select name="language" onchange="this.form.submit()" class="language-select">
+                            {% get_available_languages as LANGUAGES %}
+                            {% for lang_code, lang_name in LANGUAGES %}
+                                <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
+                                    {{ lang_name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <svg id="theme-icon-sun" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75zM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0zM18.894 6.106a.75.75 0 0 1 0 1.06l-1.591 1.59a.75.75 0 1 1-1.06-1.06l1.59-1.59a.75.75 0 0 1 1.061 0zM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 1 .75.75zM17.836 17.836a.75.75 0 0 1-1.06 0l-1.59-1.591a.75.75 0 1 1 1.06-1.06l1.591 1.59a.75.75 0 0 1 0 1.061zM12 21.75a.75.75 0 0 1-.75-.75v-2.25a.75.75 0 0 1 1.5 0v2.25a.75.75 0 0 1-.75.75zM5.106 17.836a.75.75 0 0 1 0-1.06l1.591-1.59a.75.75 0 1 1 1.06 1.06l-1.59 1.591a.75.75 0 0 1-1.061 0zM3 12a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12zM6.106 6.106a.75.75 0 0 1 1.06 0l1.59 1.591a.75.75 0 1 1-1.06 1.06L6.106 7.167a.75.75 0 0 1 0-1.06z"/>
+                    </svg>
+                    <svg id="theme-icon-moon" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                        <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"/>
+                    </svg>
+                </button>
+                <div class="auth-section">
+                    <a href="#" class="auth-btn login-btn">
+                        <svg class="auth-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.5a5.5 5.5 0 0 1 5.5 5.5c0 1.57-.67 3-1.75 3.98A8.5 8.5 0 0 1 20.5 19v.5H3.5V19a8.5 8.5 0 0 1 4.75-7.52A5.49 5.49 0 0 1 6.5 8a5.5 5.5 0 0 1 5.5-5.5zm0 2A3.5 3.5 0 0 0 8.5 8c0 1.71 1.22 3.14 2.83 3.44A6.5 6.5 0 0 0 5.5 19h13a6.5 6.5 0 0 0-5.83-7.56A3.5 3.5 0 0 0 15.5 8a3.5 3.5 0 0 0-3.5-3.5z"/>
+                        </svg>
+                        {% trans "Войти" %}
+                    </a>
+                    <a href="#" class="auth-btn logout-btn">
+                        <span class="auth-icon">🚪</span>
+                        <span class="logout-text">{% trans "Выйти" %}</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                {% trans "Design Test Page" %}
+            </h1>
+            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                {% trans "Test all design elements and theme switching functionality" %}
+            </p>
+        </div>
+
+        <!-- Theme Test Section -->
+        <section style="margin-bottom: 3rem;">
+            <h2 style="color: var(--text-primary); margin-bottom: 1.5rem;">{% trans "Theme Testing" %}</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-md);">
+                    <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">{% trans "Primary Colors" %}</h3>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; background: var(--accent-primary); border-radius: var(--radius-sm);"></div>
+                        <div style="width: 50px; height: 50px; background: var(--accent-secondary); border-radius: var(--radius-sm);"></div>
+                        <div style="width: 50px; height: 50px; background: var(--accent-hover); border-radius: var(--radius-sm);"></div>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Primary accent colors should be consistent across themes" %}</p>
+                </div>
+
+                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-md);">
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">{% trans "Text Colors" %}</h3>
+                    <p style="color: var(--text-primary); margin-bottom: 0.5rem;">{% trans "Primary text" %}</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">{% trans "Secondary text" %}</p>
+                    <p style="color: var(--text-muted); margin-bottom: 0.5rem;">{% trans "Muted text" %}</p>
+                    <p style="color: var(--text-error);">{% trans "Error text" %}</p>
+                </div>
+
+                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-md);">
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">{% trans "Interactive Elements" %}</h3>
+                    <button style="background: var(--accent-primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: var(--radius-sm); margin-right: 0.5rem; margin-bottom: 0.5rem; cursor: pointer; transition: var(--transition-normal);" onmouseover="this.style.background='var(--accent-hover)'" onmouseout="this.style.background='var(--accent-primary)'">
+                        {% trans "Primary Button" %}
+                    </button>
+                    <button style="background: var(--bg-secondary); color: var(--text-primary); border: 2px solid var(--border); padding: 0.75rem 1.5rem; border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition-normal);" onmouseover="this.style.borderColor='var(--accent-primary)'" onmouseout="this.style.borderColor='var(--border)'">
+                        {% trans "Secondary Button" %}
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Language Test Section -->
+        <section style="margin-bottom: 3rem;">
+            <h2 style="color: var(--text-primary); margin-bottom: 1.5rem;">{% trans "Language Testing" %}</h2>
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-md);">
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    {% trans "Use the language selector in the header to test language switching. All text should update accordingly." %}
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span style="background: var(--bg-info); color: var(--text-info); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.9rem;">
+                        {% trans "Current Language" %}: {{ LANGUAGE_CODE|upper }}
+                    </span>
+                    <span style="background: var(--bg-success); color: var(--text-success); padding: 0.5rem 1rem; border-radius: var(--radius-full); font-size: 0.9rem;">
+                        {% trans "Translation Active" %}
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Status Messages Test -->
+        <section style="margin-bottom: 3rem;">
+            <h2 style="color: var(--text-primary); margin-bottom: 1.5rem;">{% trans "Status Messages" %}</h2>
+            <div style="display: grid; gap: 1rem;">
+                <div style="background: var(--bg-success); border: 1px solid var(--border-success); color: var(--text-success); padding: 1rem; border-radius: var(--radius-md);">
+                    <strong>{% trans "Success:" %}</strong> {% trans "Operation completed successfully!" %}
+                </div>
+                <div style="background: var(--bg-warning); border: 1px solid var(--border-warning); color: var(--text-warning); padding: 1rem; border-radius: var(--radius-md);">
+                    <strong>{% trans "Warning:" %}</strong> {% trans "Please check your input." %}
+                </div>
+                <div style="background: var(--bg-error); border: 1px solid var(--border-error); color: var(--text-error); padding: 1rem; border-radius: var(--radius-md);">
+                    <strong>{% trans "Error:" %}</strong> {% trans "Something went wrong." %}
+                </div>
+                <div style="background: var(--bg-info); border: 1px solid var(--border-info); color: var(--text-info); padding: 1rem; border-radius: var(--radius-md);">
+                    <strong>{% trans "Info:" %}</strong> {% trans "Here's some helpful information." %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructions -->
+        <section style="text-align: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-md);">
+            <h2 style="color: var(--text-primary); margin-bottom: 1rem;">{% trans "Testing Instructions" %}</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left;">
+                <div>
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">{% trans "Theme Testing" %}</h4>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                        <li>{% trans "Click the theme toggle button" %}</li>
+                        <li>{% trans "Verify all colors change appropriately" %}</li>
+                        <li>{% trans "Check text readability in both themes" %}</li>
+                        <li>{% trans "Ensure no color conflicts occur" %}</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">{% trans "Language Testing" %}</h4>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                        <li>{% trans "Use the language selector" %}</li>
+                        <li>{% trans "Switch between available languages" %}</li>
+                        <li>{% trans "Verify all text updates correctly" %}</li>
+                        <li>{% trans "Check layout remains intact" %}</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">{% trans "Responsive Testing" %}</h4>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                        <li>{% trans "Resize browser window" %}</li>
+                        <li>{% trans "Test on mobile devices" %}</li>
+                        <li>{% trans "Verify navigation works on mobile" %}</li>
+                        <li>{% trans "Check button accessibility" %}</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        // Additional test functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Design test page loaded');
+            console.log('Current theme:', document.body.getAttribute('data-theme') || 'light');
+            console.log('Language switching and theme toggle should work correctly');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<div class="auth-page-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2 class="auth-title">{% trans "Welcome!" %}</h2>
+        </div>
+        <form class="auth-form" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="form-label" for="id_username">{% trans "Login" %}</label>
+                <input type="text" class="form-input" id="id_username" name="username" placeholder="{% trans 'Enter your login' %}" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="id_password">{% trans "Password" %}</label>
+                <div class="password-input">
+                    <input type="password" class="form-input" id="id_password" name="password" placeholder="{% trans 'Enter your password' %}" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword(this)">👁️</button>
+                </div>
+            </div>
+                {% if form.errors %}
+                    <div class="form-errors">
+                        <div class="error-message">
+                            <p>{% trans "Please enter correct data:" %}</p>
+                            {{ form.errors }}
+                        </div>
+                    </div>
+                {% endif %}
+            <div class="form-options">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="remember_me">
+                    <span class="checkbox-custom"></span>
+                    {% trans "Remember me" %}
+                </label>
+                <a href="{% url 'password_reset' %}" class="forgot-link">{% trans "Forgot your password?" %}</a>
+            </div>
+            <button type="submit" class="form-submit">
+                <span class="submit-text">{% trans "Login" %}</span>
+                <span class="submit-loader" style="display: none;">⏳</span>
+            </button>
+            <p class="form-switch">
+                {% trans "Have you created an account?" %} <a href="{% url 'register' %}">{% trans "Create an account" %}</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Join Our Team" %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="contact-container">
+    <div class="contact-header" data-aos="fade-down">
+        <h1>{% trans "Join Our Team" %}</h1>
+        <p>{% trans "We are looking for talented developers to join our team. If you are passionate about coding and want to work on exciting projects, we would love to hear from you." %}</p>
+    </div>
+
+    <div class="contact-form-section" data-aos="fade-up">
+        <form method="post" class="contact-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit-btn">{% trans "Send Application" %}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

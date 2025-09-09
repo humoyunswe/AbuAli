@@ -1,0 +1,440 @@
+/* Optimized and elegant design for profile.html */
+
+/* General Container and Layout */
+.profile-container {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Simplified background elements to reduce render load */
+.profile-container::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%); /* Lighter opacity */
+    border-radius: 50%;
+    animation: float1 10s infinite alternate ease-in-out; /* Faster animation, less impact */
+}
+
+.profile-container::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(147,51,234,0.15) 0%, transparent 70%); /* Lighter opacity */
+    border-radius: 50%;
+    animation: float2 12s infinite alternate ease-in-out; /* Faster animation, less impact */
+}
+
+@keyframes float1 {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(15px, 20px); }
+}
+
+@keyframes float2 {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-15px, -20px); }
+}
+
+/* Card Styling (Applies to both profile-card and profile-articles) */
+.profile-card,
+.profile-articles {
+    margin-top: 30px;
+    background: var(--bg-card);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07); /* Lighter base shadow */
+    padding: 3rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Faster transitions */
+    flex: 1 1 480px;
+    min-width: 320px;
+    border: none;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-card:hover,
+.profile-articles:hover {
+    transform: translateY(-5px); /* Reduced lift */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12); /* Lighter hover shadow */
+}
+
+/* Dark theme card adjustments */
+[data-theme="dark"] .profile-card,
+[data-theme="dark"] .profile-articles {
+    background: var(--bg-card-dark, #1c212e);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Adjusted dark theme shadow */
+}
+
+/* Profile Header */
+.profile-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.profile-header h2 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.05rem;
+}
+
+.profile-header h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -0.5rem;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    border-radius: 3px;
+}
+
+.profile-header p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0.5rem auto 0;
+}
+
+/* Avatar Section */
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 6px solid var(--accent-primary-light);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.15); /* Lighter avatar shadow */
+    transition: all 0.2s ease; /* Faster transition */
+}
+
+.profile-avatar:hover {
+    transform: scale(1.02); /* Reduced scale */
+    border-color: #9333ea;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25); /* Lighter hover shadow */
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #3b82f6, #9333ea);
+}
+
+/* Profile Info Section */
+.profile-info {
+    text-align: center;
+    flex: 1;
+}
+
+.profile-username {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text-primary);
+}
+
+.profile-email {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-bio {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.profile-link {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 0.3rem;
+    transition: color 0.2s ease, transform 0.2s ease; /* Faster transitions */
+}
+
+.profile-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-primary);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.2s ease; /* Faster transition */
+}
+
+.profile-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.profile-link:hover {
+    color: var(--accent-hover);
+    transform: translateY(-1px); /* Reduced lift */
+}
+
+.profile-edit-btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #3b82f6, #9333ea);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Faster transition */
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); /* Lighter shadow */
+    gap: 0.8rem;
+}
+
+.profile-edit-btn:hover {
+    transform: translateY(-4px); /* Reduced lift */
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.45); /* Lighter hover shadow */
+}
+
+/* Articles Section */
+.profile-articles h3 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--border-light);
+    text-align: center;
+}
+
+.profile-article-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-article-list li {
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px dashed var(--border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: background-color 0.2s ease; /* Faster transition */
+}
+
+.profile-article-list li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.profile-article-list li:hover {
+    background-color: var(--bg-hover-light);
+    border-radius: 8px;
+    padding-left: 0.5rem;
+}
+
+[data-theme="dark"] .profile-article-list li:hover {
+    background-color: var(--bg-hover-dark);
+}
+
+.profile-article-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: color 0.2s ease; /* Faster transition */
+    margin-bottom: 0.5rem;
+}
+
+.profile-article-link:hover {
+    color: var(--accent-primary);
+    text-decoration: underline;
+}
+
+.profile-article-date {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Dark theme global adjustments */
+[data-theme="dark"] .profile-container::before,
+[data-theme="dark"] .profile-container::after {
+    background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%); /* Lighter dark theme gradients */
+}
+
+[data-theme="dark"] .profile-username,
+[data-theme="dark"] .profile-articles h3,
+[data-theme="dark"] .profile-article-link {
+    color: var(--text-primary-dark);
+}
+
+[data-theme="dark"] .profile-email,
+[data-theme="dark"] .profile-bio,
+[data-theme="dark"] .profile-link,
+[data-theme="dark"] .profile-article-date {
+    color: var(--text-secondary-dark);
+}
+
+[data-theme="dark"] .profile-link:hover {
+    color: var(--accent-hover-dark);
+}
+
+[data-theme="dark"] .profile-articles h3 {
+    border-bottom-color: var(--border-dark-light);
+}
+
+[data-theme="dark"] .profile-article-list li {
+    border-bottom-color: var(--border-dark-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        margin: 3rem auto;
+    }
+    .profile-card,
+    .profile-articles {
+        width: 90%;
+        max-width: 550px;
+        padding: 2.5rem;
+    }
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profile-avatar {
+        margin-bottom: 2rem;
+    }
+    .profile-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
+    }
+    .profile-edit-btn {
+        padding: 0.9rem 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-container {
+        padding: 0 1rem;
+        margin: 2rem auto;
+        gap: 2rem;
+    }
+    .profile-card,
+    .profile-articles {
+        padding: 2rem;
+    }
+    .profile-header h2 {
+        font-size: 2.5rem;
+    }
+    .profile-header p {
+        font-size: 1rem;
+    }
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1.5rem;
+    }
+    .profile-avatar-placeholder {
+        font-size: 3.5rem;
+    }
+    .profile-username {
+        font-size: 2rem;
+    }
+    .profile-email, .profile-bio, .profile-link {
+        font-size: 0.95rem;
+    }
+    .profile-edit-btn {
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+    }
+    .profile-articles h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+    .profile-article-list li {
+        margin-bottom: 1.2rem;
+        padding-bottom: 1.2rem;
+    }
+    .profile-article-link {
+        font-size: 1.05rem;
+    }
+    .profile-article-date {
+        font-size: 0.85rem;
+    }
+}
+
+/* Global smooth transitions (can be set in base.css as well) */
+* {
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Faster global transition */
+}
+
+/* Card entry animation */
+.profile-card, .profile-articles {
+    animation: fadeInScaleBounce 0.6s ease-out forwards; /* Faster animation, less aggressive bounce */
+}
+
+@keyframes fadeInScaleBounce {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

@@ -1,0 +1,602 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-15 08:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/about_us/about_us.html:11
+msgid "Innovating the Digital World"
+msgstr "Innovating the Digital World"
+
+#: templates/about_us/about_us.html:12
+msgid "Empowering businesses with cutting-edge technology solutions"
+msgstr "Empowering businesses with cutting-edge technology solutions"
+
+#: templates/about_us/about_us.html:18 templates/base.html:29
+msgid "About Us"
+msgstr "About Us"
+
+#: templates/base.html:27
+msgid "Articles"
+msgstr "Articles"
+
+#: templates/base.html:28
+msgid "Tutorials"
+msgstr "Tutorials"
+
+#: templates/base.html:30
+msgid "Projects"
+msgstr "Projects"
+
+#: templates/base.html:31
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/base.html:32
+msgid "Profile"
+msgstr "Profile"
+
+#: templates/base.html:59
+msgid "Войти"
+msgstr "Login"
+
+#: templates/base.html:72
+msgid "Выйти"
+msgstr "Logout"
+
+#: templates/base.html:105
+msgid "Мой профиль"
+msgstr "My Profile"
+
+#: templates/base.html:109
+msgid "Настройки"
+msgstr "Settings"
+
+#: templates/base.html:113
+msgid "Мои статьи"
+msgstr "My Articles"
+
+#: templates/base.html:117
+msgid "Сохраненное"
+msgstr "Saved"
+
+#: templates/about_us/about_us.html:29
+msgid "Our Services"
+msgstr "Our Services"
+
+#: templates/about_us/about_us.html:30
+msgid "Our Clients"
+msgstr "Our Clients"
+
+#: templates/about_us/about_us.html:21
+msgid ""
+"We are a forward-thinking software company dedicated to transforming the "
+"digital landscape. Our mission is to make the world a better place through "
+"innovative technology solutions."
+msgstr ""
+"We are a forward-thinking software company dedicated to transforming the "
+"digital landscape. Our mission is to make the world a better place through "
+"innovative technology solutions."
+
+#: templates/about_us/about_us.html:22
+msgid ""
+"With expertise in web development, mobile applications, and custom software "
+"solutions, we deliver exceptional digital experiences that drive business "
+"growth and enhance user engagement."
+msgstr ""
+"With expertise in web development, mobile applications, and custom software "
+"solutions, we deliver exceptional digital experiences that drive business "
+"growth and enhance user engagement."
+
+#: templates/about_us/about_us.html:23
+msgid ""
+"Our team of passionate developers and designers are committed to excellence, "
+"ensuring every project meets the highest standards of quality and innovation."
+msgstr ""
+"Our team of passionate developers and designers are committed to excellence, "
+"ensuring every project meets the highest standards of quality and innovation."
+
+#: templates/about_us/about_us.html:29
+msgid "Projects Completed"
+msgstr "Projects Completed"
+
+#: templates/about_us/about_us.html:33
+msgid "Happy Clients"
+msgstr "Happy Clients"
+
+#: templates/about_us/about_us.html:37
+msgid "Team Members"
+msgstr "Team Members"
+
+#: templates/about_us/about_us.html:47
+msgid "Our Services"
+msgstr "Our Services"
+
+#: templates/about_us/about_us.html:51
+#: templates/projects/projects_detial.html:41
+msgid "Web Development"
+msgstr "Web Development"
+
+#: templates/about_us/about_us.html:52
+msgid ""
+"Custom websites and web applications built with the latest technologies and "
+"best practices."
+msgstr ""
+"Custom websites and web applications built with the latest technologies and "
+"best practices."
+
+#: templates/about_us/about_us.html:56
+msgid "Mobile Apps"
+msgstr "Mobile Apps"
+
+#: templates/about_us/about_us.html:57
+msgid ""
+"Native and cross-platform mobile applications designed for both iOS and "
+"Android."
+msgstr ""
+"Native and cross-platform mobile applications designed for both iOS and "
+"Android."
+
+#: templates/about_us/about_us.html:61
+msgid "Telegram Bots"
+msgstr "Telegram Bots"
+
+#: templates/about_us/about_us.html:62
+msgid ""
+"Smart and efficient Telegram bots for business automation and customer "
+"service."
+msgstr ""
+"Smart and efficient Telegram bots for business automation and customer "
+"service."
+
+#: templates/about_us/about_us.html:66
+msgid "UI/UX Design"
+msgstr "UI/UX Design"
+
+#: templates/about_us/about_us.html:67
+msgid ""
+"Unique and user-friendly designs that enhance user experience and brand "
+"identity."
+msgstr ""
+"Unique and user-friendly designs that enhance user experience and brand "
+"identity."
+
+#: templates/about_us/about_us.html:104
+msgid "Ready to transform your digital presence?"
+msgstr "Ready to transform your digital presence?"
+
+#: templates/about_us/about_us.html:105
+msgid "Contact Us Today"
+msgstr "Contact Us Today"
+
+#: templates/about_us/darslar.html:4 templates/about_us/darslar.html:13
+#: templates/base.html:26
+msgid "Tutorials"
+msgstr "Tutorials"
+
+#: templates/about_us/darslar.html:17
+msgid "Lesson 1: Python Basics"
+msgstr "Lesson 1: Python Basics"
+
+#: templates/about_us/darslar.html:18
+msgid ""
+"Basics of the Python programming language and important information for "
+"learning"
+msgstr ""
+"Basics of the Python programming language and important information for "
+"learning"
+
+#: templates/about_us/darslar.html:20
+msgid "12 hours"
+msgstr "12 hours"
+
+#: templates/about_us/darslar.html:21
+msgid "500+ students"
+msgstr "500+ students"
+
+#: templates/about_us/darslar.html:26 templates/about_us/darslar.html:41
+#: templates/about_us/darslar.html:56 templates/projects/projects_list.html:21
+msgid "Details"
+msgstr "Details"
+
+#: templates/about_us/darslar.html:32
+msgid "Lesson 2: Django Framework"
+msgstr "Lesson 2: Django Framework"
+
+#: templates/about_us/darslar.html:33
+msgid "Basics of the Django framework and creating websites"
+msgstr "Basics of the Django framework and creating websites"
+
+#: templates/about_us/darslar.html:35
+msgid "15 hours"
+msgstr "15 hours"
+
+#: templates/about_us/darslar.html:36
+msgid "300+ students"
+msgstr "300+ students"
+
+#: templates/about_us/darslar.html:47
+msgid "Lesson 3: Frontend Development"
+msgstr "Lesson 3: Frontend Development"
+
+#: templates/about_us/darslar.html:48
+msgid "HTML, CSS, and JavaScript basics"
+msgstr "HTML, CSS, and JavaScript basics"
+
+#: templates/about_us/darslar.html:50
+msgid "10 hours"
+msgstr "10 hours"
+
+#: templates/about_us/darslar.html:51
+msgid "450+ students"
+msgstr "450+ students"
+
+#: templates/accounts/edit_profile.html:3
+#: templates/accounts/edit_profile.html:9 templates/accounts/profile.html:34
+msgid "Edit Profile"
+msgstr "Edit Profile"
+
+#: templates/accounts/edit_profile.html:10
+msgid "Update your information"
+msgstr "Update your information"
+
+#: templates/accounts/edit_profile.html:32
+msgid "Upload Photo"
+msgstr "Upload Photo"
+
+#: templates/accounts/edit_profile.html:42
+msgid "First Name"
+msgstr "First Name"
+
+#: templates/accounts/edit_profile.html:48
+msgid "Last Name"
+msgstr "Last Name"
+
+#: templates/accounts/edit_profile.html:54 templates/accounts/profile.html:31
+msgid "Website"
+msgstr "Website"
+
+#: templates/accounts/edit_profile.html:60 templates/accounts/profile.html:28
+msgid "GitHub"
+msgstr "GitHub"
+
+#: templates/accounts/edit_profile.html:67
+msgid "Save Changes"
+msgstr "Save Changes"
+
+#: templates/accounts/profile.html:5 templates/base.html:30
+msgid "Profile"
+msgstr "Profile"
+
+#: templates/accounts/profile.html:38
+msgid "Your recent articles"
+msgstr "Your recent articles"
+
+#: templates/accounts/profile.html:49
+msgid "You have no published articles yet."
+msgstr "You have no published articles yet."
+
+#: templates/articles/article_detail.html:19
+msgid "Home"
+msgstr "Home"
+
+#: templates/articles/article_detail.html:37
+msgid "views"
+msgstr "views"
+
+#: templates/articles/article_detail.html:58
+msgid "Author at DevBlog"
+msgstr "Author at DevBlog"
+
+#: templates/articles/article_detail.html:124
+msgid "Table of Contents"
+msgstr "Table of Contents"
+
+#: templates/articles/article_detail.html:132
+msgid "Related articles"
+msgstr "Related articles"
+
+#: templates/articles/article_detail.html:161
+msgid "Comments"
+msgstr "Comments"
+
+#: templates/articles/article_detail.html:177
+msgid "Leave a comment"
+msgstr "Leave a comment"
+
+#: templates/articles/article_detail.html:185
+msgid "Publish"
+msgstr "Publish"
+
+#: templates/articles/article_detail.html:196
+msgid "Please"
+msgstr "Please"
+
+#: templates/articles/article_detail.html:196
+msgid "log in"
+msgstr "log in"
+
+#: templates/articles/article_detail.html:196
+msgid "to leave a comment"
+msgstr "to leave a comment"
+
+#: templates/articles/article_detail.html:235
+msgid "Submit"
+msgstr "Submit"
+
+#: templates/articles/article_detail.html:236
+msgid "Cancel"
+msgstr "Cancel"
+
+#: templates/articles/article_detail.html:264
+msgid "No comments yet"
+msgstr "No comments yet"
+
+#: templates/articles/article_detail.html:265
+msgid "Be the first to comment on this article!"
+msgstr "Be the first to comment on this article!"
+
+#: templates/articles/article_list.html:3
+msgid "Article List"
+msgstr "Article List"
+
+#: templates/articles/article_list.html:10
+msgid "Search articles"
+msgstr "Search articles"
+
+#: templates/articles/article_list.html:11
+msgid "Enter keywords..."
+msgstr "Enter keywords..."
+
+#: templates/articles/article_list.html:16
+msgid "Filter by tags"
+msgstr "Filter by tags"
+
+#: templates/articles/article_list.html:18
+msgid "All"
+msgstr "All"
+
+#: templates/articles/article_list.html:31
+msgid "Latest articles"
+msgstr "Latest articles"
+
+#: templates/articles/article_list.html:41
+msgid "By date"
+msgstr "By date"
+
+#: templates/articles/article_list.html:42
+msgid "By popularity"
+msgstr "By popularity"
+
+#: templates/articles/article_list.html:43
+msgid "By comments"
+msgstr "By comments"
+
+#: templates/articles/article_list.html:69
+msgid "Read more"
+msgstr "Read more"
+
+#: templates/articles/article_list.html:80
+msgid "No articles found"
+msgstr "No articles found"
+
+#: templates/articles/article_list.html:87
+msgid "Previous"
+msgstr "Previous"
+
+#: templates/articles/article_list.html:93
+msgid "Next"
+msgstr "Next"
+
+#: templates/base.html:25
+msgid "Articles"
+msgstr "Articles"
+
+#: templates/base.html:28 templates/projects/projects_list.html:9
+msgid "Projects"
+msgstr "Projects"
+
+#: templates/base.html:29
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/base.html:48
+msgid "Темная тема"
+msgstr "Dark theme"
+
+#: templates/base.html:56
+msgid "Войти"
+msgstr "Login"
+
+#: templates/base.html:60
+msgid "Регистрация"
+msgstr "Register"
+
+#: templates/base.html:69 templates/base.html:119
+msgid "Выйти"
+msgstr "Logout"
+
+#: templates/base.html:102
+msgid "Мой профиль"
+msgstr "My Profile"
+
+#: templates/base.html:106
+msgid "Настройки"
+msgstr "Settings"
+
+#: templates/base.html:110
+msgid "Мои статьи"
+msgstr "My Articles"
+
+#: templates/base.html:114
+msgid "Сохраненное"
+msgstr "Saved"
+
+#: templates/candidate/contact_to_us.html:10
+#: templates/candidate/contact_to_us.html:15
+msgid "Contact Us"
+msgstr "Contact Us"
+
+#: templates/candidate/contact_to_us.html:16
+msgid ""
+"We are always happy to help. Choose a convenient way to contact us or send "
+"us a message using the form below."
+msgstr ""
+"We are always happy to help. Choose a convenient way to contact us or send "
+"us a message using the form below."
+
+#: templates/candidate/contact_to_us.html:24
+msgid "Instagram"
+msgstr "Instagram"
+
+#: templates/candidate/contact_to_us.html:25
+#: templates/candidate/contact_to_us.html:34
+msgid "Follow us to stay updated."
+msgstr "Follow us to stay updated."
+
+#: templates/candidate/contact_to_us.html:33
+msgid "Telegram"
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:42
+msgid "Phone"
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:43
+msgid "Call us during business hours for a consultation."
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:49
+msgid "Send a message"
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:54
+msgid "Your name"
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:58
+msgid "Your Email"
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:63
+msgid "Subject"
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:67
+msgid "Message"
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:70
+msgid "Send"
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:76
+msgid "Are you a developer?"
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:77
+msgid "Want to join our team?"
+msgstr ""
+
+#: templates/candidate/contact_to_us.html:78
+msgid "Join Us"
+msgstr ""
+
+#: templates/candidate/joing_to_us.html:5
+#: templates/candidate/joing_to_us.html:14
+msgid "Join Our Team"
+msgstr ""
+
+#: templates/candidate/joing_to_us.html:15
+msgid ""
+"We are looking for talented developers to join our team. If you are "
+"passionate about coding and want to work on exciting projects, we would love "
+"to hear from you."
+msgstr ""
+
+#: templates/candidate/joing_to_us.html:22
+msgid "Send Application"
+msgstr ""
+
+#: templates/projects/projects_detial.html:15
+msgid "Published on"
+msgstr ""
+
+#: templates/projects/projects_detial.html:29
+msgid "About the Project"
+msgstr ""
+
+#: templates/projects/projects_detial.html:37
+msgid "Project Info"
+msgstr ""
+
+#: templates/projects/projects_detial.html:39
+msgid "Client"
+msgstr ""
+
+#: templates/projects/projects_detial.html:39
+msgid "Personal Project"
+msgstr ""
+
+#: templates/projects/projects_detial.html:40
+msgid "Date"
+msgstr ""
+
+#: templates/projects/projects_detial.html:41
+msgid "Category"
+msgstr ""
+
+#: templates/projects/projects_detial.html:45
+#: templates/projects/projects_list.html:23
+msgid "Live Demo"
+msgstr ""
+
+#: templates/projects/projects_detial.html:48
+msgid "Source Code"
+msgstr ""
+
+#: templates/projects/projects_detial.html:53
+msgid "Technologies"
+msgstr ""
+
+#: templates/projects/projects_detial.html:58
+msgid "No technologies listed."
+msgstr ""
+
+#: templates/projects/projects_detial.html:67
+msgid "Project Not Found"
+msgstr ""
+
+#: templates/projects/projects_detial.html:68
+msgid "Sorry, the project you are looking for could not be found."
+msgstr ""
+
+#: templates/projects/projects_detial.html:69
+msgid "Go Back to Projects"
+msgstr ""
+
+#: templates/projects/projects_list.html:29
+msgid "No projects yet."
+msgstr ""
+
+#: uzbek_code/settings.py:125
+msgid "Russian"
+msgstr ""
+
+#: uzbek_code/settings.py:126
+msgid "English"
+msgstr ""

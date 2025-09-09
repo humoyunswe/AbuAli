@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Article List" %}{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <aside class="sidebar">
+        <div class="search-container">
+            <form method="get" action="{% url 'article_list' %}">
+                <label class="search-label">{% trans "Search articles" %}</label>
+                <input type="text" name="search" class="search-box" placeholder="{% trans "Enter keywords..." %}" value="{{ search_query|default:'' }}">
+            </form>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-title">{% trans "Filter by tags" %}</div>
+            <div class="tag-filters">
+                <a style="text-decoration: none;" href="{% url 'article_list' %}" class="tag-filter {% if not current_tag %}active{% endif %}">{% trans "All" %}</a>
+                {% for tag in popular_tags %}
+                <a style="text-decoration: none;" href="{% url 'article_list' %}?tag={{ tag.name }}" 
+                   class="tag-filter {% if current_tag == tag.name %}active{% endif %}">
+                    {{ tag.name }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </aside>
+
+    <main class="content-area">
+        <div class="articles-header">
+            <h1 class="section-title">{% trans "Latest articles" %}</h1>
+            <div class="sort-options">
+                <form method="get" action="{% url 'article_list' %}" class="sort-form">
+                    {% if search_query %}
+                    <input type="hidden" name="search" value="{{ search_query }}">
+                    {% endif %}
+                    {% if current_tag %}
+                    <input type="hidden" name="tag" value="{{ current_tag }}">
+                    {% endif %}
+                    <select name="sort" class="sort-select" onchange="this.form.submit()">
+                        <option value="newest" {% if sort_by == 'newest' %}selected{% endif %}>{% trans "By date" %}</option>
+                        <option value="popular" {% if sort_by == 'popular' %}selected{% endif %}>{% trans "By popularity" %}</option>
+                        <option value="most_commented" {% if sort_by == 'most_commented' %}selected{% endif %}>{% trans "By comments" %}</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+        
+        <div class="articles-grid">
+            {% for article in page_obj %}
+            <article class="article-card" data-tags="{{ article.tags.all|join:' ' }}">
+                {% if article.featured_image %}
+                <div class="article-image">
+                    <img src="{{ article.featured_image.url }}" alt="{{ article.title }}" loading="lazy">
+                </div>
+                {% else %}
+                <div class="article-image"></div>
+                {% endif %}
+                <div class="article-content">
+                    <div class="article-meta">
+                        {% for tag in article.tags.all %}
+                        <span class="article-tag">{{ tag.name }}</span>
+                        {% endfor %}
+                        <span class="article-date">{{ article.created_at|date:"d M Y" }}</span>
+                    </div>
+                    <h3 class="article-title">{{ article.title }}</h3>
+                    <p class="article-excerpt">{{ article.excerpt }}</p>
+                    <div class="article-footer">
+                        <a href="{{ article.get_absolute_url }}" class="read-more">{% trans "Read more" %} →</a>
+                        <div class="article-stats">
+                            <span>👁 {{ article.views }}</span>
+                            <span>❤️ {{ article.likes_count }}</span>
+                            <span>💬 {{ article.comments_count }}</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {% empty %}
+            <div class="no-articles">
+                <p>{% trans "No articles found" %}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if current_tag %}&tag={{ current_tag }}{% endif %}{% if sort_by %}&sort={{ sort_by }}{% endif %}">← {% trans "Previous" %}</a>
+            {% endif %}
+            
+            <span class="current">{{ page_obj.number }}</span>
+            
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if current_tag %}&tag={{ current_tag }}{% endif %}{% if sort_by %}&sort={{ sort_by }}{% endif %}">{% trans "Next" %} →</a>
+            {% endif %}
+        </div>
+    </main>
+</div>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Обработка поиска при вводе
+    const searchInput = document.querySelector('.search-box');
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            this.form.submit();
+        }, 500);
+    });
+});
+</script>
+{% endblock %}
+{% endblock %}

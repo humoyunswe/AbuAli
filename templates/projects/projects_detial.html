@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/_project_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="project-detail-container">
+    {% if project %}
+        <header class="project-header animate-fade-in-down">
+            <h1 class="project-title">{{ project.title }}</h1>
+            {% if project.created_at %}
+                <p class="project-date">{% trans "Published on" %} {{ project.created_at|date:"F d, Y" }}</p>
+            {% endif %}
+        </header>
+
+        <div class="project-hero-image-wrapper animate-fade-in">
+            {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-hero-image">
+            {% else %}
+                <img src="https://via.placeholder.com/1200x600/1a1a2e/ffffff?text={{project.title}}" alt="{{ project.title }}" class="project-hero-image">
+            {% endif %}
+        </div>
+
+        <div class="project-content-body">
+            <article class="project-description-wrapper animate-fade-in-up">
+                <h2 class="section-title">{% trans "About the Project" %}</h2>
+                <div class="project-description">
+                    {{ project.description|linebreaks }}
+                </div>
+            </article>
+
+            <aside class="project-sidebar animate-fade-in-left">
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">{% trans "Project Info" %}</h3>
+                    <ul class="project-meta">
+                        <li><strong>{% trans "Client" %}:</strong> {{ project.client|default:_('Personal Project') }}</li>
+                        <li><strong>{% trans "Date" %}:</strong> {{ project.created_at|date:"Y" }}</li>
+                        <li><strong>{% trans "Category" %}:</strong> {{ project.category|default:_('Web Development') }}</li>
+                    </ul>
+                    <div class="project-links">
+                        {% if project.live_demo %}
+                            <a href="{{ project.live_demo }}" class="btn btn-primary" target="_blank">{% trans "Live Demo" %}</a>
+                        {% endif %}
+                        {% if project.source_code %}
+                            <a href="{{ project.source_code }}" class="btn btn-secondary" target="_blank">{% trans "Source Code" %}</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">{% trans "Technologies" %}</h3>
+                    <div class="tech-tags">
+                        {% for tech in project.technologies.all %}
+                            <span class="tech-tag">{{ tech.name }}</span>
+                        {% empty %}
+                            <p>{% trans "No technologies listed." %}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    {% else %}
+        <div class="not-found-container">
+            <h2 class="not-found-title">{% trans "Project Not Found" %}</h2>
+            <p>{% trans "Sorry, the project you are looking for could not be found." %}</p>
+            <a href="{% url 'project_list' %}" class="btn btn-primary">{% trans "Go Back to Projects" %}</a>
+        </div>
+    {% endif %}
+</main>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Profile" %} - UzbCode{% endblock %}
+{% block content %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/_profile.css' %}">
+{% endblock %}
+<div style="margin-top:40px;" class="profile-container">
+    <div class="profile-card">
+        <div class="profile-avatar">
+            {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="{{ user.username }}">
+            {% else %}
+                <div class="profile-avatar-placeholder">{{ user.username|slice:":1"|upper }}</div>
+            {% endif %}
+        </div>
+        <div class="profile-info">
+            <h2 class="profile-username">{{ user.get_full_name|default:user.username }}</h2>
+            <p class="profile-email">{{ user.email }}</p>
+            {% if user.bio %}
+                <p class="profile-bio">{{ user.bio }}</p>
+            {% endif %}
+            <div class="profile-links">
+                {% if user.github %}
+                    <a href="{{ user.github }}" target="_blank" class="profile-link">{% trans "GitHub" %}</a>
+                {% endif %}
+                {% if user.website %}
+                    <a href="{{ user.website }}" target="_blank" class="profile-link">{% trans "Website" %}</a>
+                {% endif %}
+            </div>
+            <a href="{% url 'edit_profile' %}" class="profile-edit-btn">{% trans "Edit Profile" %}</a>
+        </div>
+    </div>
+    <div class="profile-articles">
+        <h3>{% trans "Your recent articles" %}</h3>
+        {% if user_articles %}
+            <ul class="profile-article-list">
+                {% for article in user_articles %}
+                    <li>
+                        <a href="{{ article.get_absolute_url }}" class="profile-article-link">{{ article.title }}</a>
+                        <span class="profile-article-date">{{ article.created_at|date:"d M Y" }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>{% trans "You have no published articles yet." %}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+

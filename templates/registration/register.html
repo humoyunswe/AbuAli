@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Registration" %} - UzbCode{% endblock %}
+
+{% block content %}
+<style>
+    .form-control{
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .form-error{
+        color: red;
+    }
+    
+</style>
+<div class="auth-page-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2 class="auth-title">{% trans "Create an account" %}</h2>
+        </div>
+        <form class="auth-form" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {% if field.name == 'password1' or field.name == 'password2' %}
+                        <div class="password-input">
+                            {{ field }}
+                            <button type="button" class="password-toggle" onclick="togglePassword(this)">👁️</button>
+                        </div>
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                    {% if field.errors %}
+                        <div class="form-error">{{ field.errors.0 }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            
+            <button type="submit" class="form-submit">
+                <span class="submit-text">{% trans "Create an account" %}</span>
+                <span class="submit-loader" style="display: none;">⏳</span>
+            </button>
+            <p class="form-switch">
+                {% trans "Already have an account?" %} <a href="{% url 'login' %}">{% trans "Login" %}</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function togglePassword(button) {
+    const input = button.previousElementSibling;
+    const isPassword = input.type === 'password';
+    
+    input.type = isPassword ? 'text' : 'password';
+    button.textContent = isPassword ? '👁️' : '👁️';
+}
+
+// Password strength validation
+const password1 = document.getElementById('id_password1');
+const password2 = document.getElementById('id_password2');
+if (password1 && password2) {
+    password1.addEventListener('input', validatePassword);
+    password2.addEventListener('input', validatePassword);
+}
+
+function validatePassword() {
+    const pass1 = password1.value;
+    const pass2 = password2.value;
+    
+    // Password strength indicator
+    const strength = document.createElement('div');
+    strength.className = 'password-strength';
+    strength.style.width = '0%';
+    strength.style.backgroundColor = '#f44336';
+    
+    const strengthText = document.createElement('small');
+    strengthText.className = 'strength-text';
+    strengthText.textContent = '{% trans "Weak password" %}';
+    strengthText.style.color = '#f44336';
+    
+    if (!document.querySelector('.password-strength')) {
+        password1.parentElement.appendChild(strength);
+        password1.parentElement.appendChild(strengthText);
+    }
+    
+    let score = 0;
+    if (pass1.length >= 8) score++;
+    if (/[A-Z]/.test(pass1)) score++;
+    if (/[0-9]/.test(pass1)) score++;
+    if (/[!@#$%^&*]/.test(pass1)) score++;
+    
+    strength.style.width = (score * 25) + '%';
+    strength.style.backgroundColor = score >= 3 ? '#4CAF50' : '#f44336';
+    
+    strengthText.textContent = score >= 3 ? '{% trans "Strong password" %}' : '{% trans "Weak password" %}';
+    strengthText.style.color = score >= 3 ? '#4CAF50' : '#f44336';
+    
+    // Password match validation
+    if (pass2) {
+        const matchError = document.createElement('small');
+        matchError.className = 'password-match-error';
+        
+        if (pass1 !== pass2) {
+            matchError.textContent = '{% trans "Passwords do not match" %}';
+            matchError.style.color = '#f44336';
+        } else {
+            matchError.textContent = '{% trans "Passwords match" %}';
+            matchError.style.color = '#4CAF50';
+        }
+        
+        if (!document.querySelector('.password-match-error')) {
+            password2.parentElement.appendChild(matchError);
+        }
+    }
+}
+</script>
+{% endblock %}
